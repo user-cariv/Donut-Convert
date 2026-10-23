@@ -30,6 +30,7 @@ jobs:
           mkdir -p "_site/Windows/Donut/installer"
           cp -R Website/. _site/
           cp "Windows/Donut/installer/Install Donut.exe" "_site/Windows/Donut/installer/"
+          cp "Windows/Donut/installer/Install-Donut.zip" "_site/Windows/Donut/installer/"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
