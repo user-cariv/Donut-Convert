@@ -1,0 +1,65 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		100000000000000000000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000001 /* AppDelegate.swift */; };
+		100000000000000000000002 /* FileConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000002 /* FileConverter.swift */; };
+		100000000000000000000003 /* RadialDonutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000003 /* RadialDonutView.swift */; };
+		100000000000000000000004 /* RadialWindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000004 /* RadialWindowManager.swift */; };
+		100000000000000000000005 /* DonutLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000007 /* DonutLogo.jpg */; };
+		100000000000000000000006 /* Donut.icns in Resources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000008 /* Donut.icns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		200000000000000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		200000000000000000000002 /* FileConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileConverter.swift; sourceTree = "<group>"; };
+		200000000000000000000003 /* RadialDonutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialDonutView.swift; sourceTree = "<group>"; };
+		200000000000000000000004 /* RadialWindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialWindowManager.swift; sourceTree = "<group>"; };
+		200000000000000000000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		200000000000000000000006 /* Donut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Donut.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000007 /* DonutLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DonutLogo.jpg; sourceTree = "<group>"; };
+		200000000000000000000008 /* Donut.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Donut.icns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		300000000000000000000001 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		400000000000000000000001 = {isa = PBXGroup; children = (400000000000000000000002, 400000000000000000000003); sourceTree = "<group>"; };
+		400000000000000000000002 /* Donut */ = {isa = PBXGroup; children = (200000000000000000000001, 200000000000000000000002, 200000000000000000000003, 200000000000000000000004, 200000000000000000000005, 200000000000000000000007, 200000000000000000000008); path = .; sourceTree = "<group>"; };
+		400000000000000000000003 /* Products */ = {isa = PBXGroup; children = (200000000000000000000006); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		500000000000000000000001 /* Donut */ = {isa = PBXNativeTarget; buildConfigurationList = 600000000000000000000001; buildPhases = (300000000000000000000002, 300000000000000000000001, 300000000000000000000003); buildRules = (); dependencies = (); name = Donut; productName = Donut; productReference = 200000000000000000000006; productType = "com.apple.product-type.application"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		700000000000000000000001 /* Project object */ = {isa = PBXProject; attributes = {LastUpgradeCheck = 1500; ORGANIZATIONNAME = "Open Source"; TargetAttributes = {500000000000000000000001 = {CreatedOnToolsVersion = 15.0; }; }; }; buildConfigurationList = 600000000000000000000002; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base); mainGroup = 400000000000000000000001; productRefGroup = 400000000000000000000003; projectDirPath = ""; projectRoot = ""; targets = (500000000000000000000001); };
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		300000000000000000000002 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (100000000000000000000001, 100000000000000000000002, 100000000000000000000003, 100000000000000000000004); runOnlyForDeploymentPostprocessing = 0; };
+		300000000000000000000003 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (100000000000000000000005, 100000000000000000000006); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		800000000000000000000001 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES; CODE_SIGN_IDENTITY = "-"; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = Info.plist; MACOSX_DEPLOYMENT_TARGET = 13.0; PRODUCT_BUNDLE_IDENTIFIER = com.donut.app; PRODUCT_NAME = Donut; SWIFT_VERSION = 5.0; }; name = Debug; };
+		800000000000000000000002 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES; CODE_SIGN_IDENTITY = "-"; CURRENT_PROJECT_VERSION = 1; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = Info.plist; MACOSX_DEPLOYMENT_TARGET = 13.0; PRODUCT_BUNDLE_IDENTIFIER = com.donut.app; PRODUCT_NAME = Donut; SWIFT_VERSION = 5.0; }; name = Release; };
+		800000000000000000000003 /* Project Debug */ = {isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES; MACOSX_DEPLOYMENT_TARGET = 13.0; SWIFT_VERSION = 5.0; }; name = Debug; };
+		800000000000000000000004 /* Project Release */ = {isa = XCBuildConfiguration; buildSettings = {CLANG_ENABLE_MODULES = YES; MACOSX_DEPLOYMENT_TARGET = 13.0; SWIFT_VERSION = 5.0; }; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		600000000000000000000001 /* Build configuration list for PBXNativeTarget */ = {isa = XCConfigurationList; buildConfigurations = (800000000000000000000001, 800000000000000000000002); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		600000000000000000000002 /* Build configuration list for PBXProject */ = {isa = XCConfigurationList; buildConfigurations = (800000000000000000000003, 800000000000000000000004); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+	};
+	rootObject = 700000000000000000000001 /* Project object */;
+}

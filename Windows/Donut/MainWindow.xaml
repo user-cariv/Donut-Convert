@@ -1,0 +1,261 @@
+<Window x:Class="Donut.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Donut"
+        Width="520"
+        Height="650"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        Topmost="True"
+        Loaded="Window_Loaded"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Drop="Window_Drop"
+        DragOver="Window_DragOver"
+        DragLeave="Window_DragLeave"
+        AllowDrop="True">
+  <Window.Resources>
+    <SolidColorBrush x:Key="InkBrush" Color="#202124"/>
+    <SolidColorBrush x:Key="MutedBrush" Color="#77797D"/>
+    <SolidColorBrush x:Key="LineBrush" Color="#E8E8E6"/>
+    <SolidColorBrush x:Key="AccentBrush" Color="#D96B3B"/>
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+    <Style x:Key="IconButton" TargetType="Button">
+      <Setter Property="Width" Value="30"/>
+      <Setter Property="Height" Value="30"/>
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Foreground" Value="#8A8B8D"/>
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="Chrome" Background="{TemplateBinding Background}" CornerRadius="15">
+              <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Chrome" Property="Background" Value="#F0F0EE"/>
+                <Setter Property="Foreground" Value="#333437"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <Style x:Key="FormatButton" TargetType="Button">
+      <Setter Property="Height" Value="58"/>
+      <Setter Property="Margin" Value="0,0,10,10"/>
+      <Setter Property="Background" Value="#FAFAF8"/>
+      <Setter Property="BorderBrush" Value="{StaticResource LineBrush}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Foreground" Value="{StaticResource InkBrush}"/>
+      <Setter Property="FontFamily" Value="Segoe UI"/>
+      <Setter Property="FontSize" Value="13"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="Chrome"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="12"
+                    Padding="16,0">
+              <ContentPresenter VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Chrome" Property="Background" Value="#F4F1EE"/>
+                <Setter TargetName="Chrome" Property="BorderBrush" Value="#D8B19D"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Chrome" Property="Background" Value="#EDE3DE"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding IsSelected}" Value="True">
+          <Setter Property="Background" Value="#FFF7F2"/>
+          <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}"/>
+          <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+  </Window.Resources>
+
+  <Border CornerRadius="28"
+          Background="#FDFDFC"
+          BorderBrush="#FFFFFF"
+          BorderThickness="1"
+          Padding="24">
+    <Border.Effect>
+      <DropShadowEffect Color="#22000000" BlurRadius="30" ShadowDepth="10" Opacity=".22"/>
+    </Border.Effect>
+
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="34"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0">
+        <TextBlock Text="DONUT"
+                   FontSize="12"
+                   FontWeight="Bold"
+                   Foreground="{StaticResource InkBrush}"
+                   VerticalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+          <Button Style="{StaticResource IconButton}" Content="—" Click="Minimize_Click"/>
+          <Button Style="{StaticResource IconButton}" Content="×" FontSize="20" Click="Close_Click"/>
+        </StackPanel>
+      </Grid>
+
+      <StackPanel Grid.Row="1" Margin="0,18,0,0">
+        <Viewbox x:Name="Logo"
+                 Width="116"
+                 Height="116"
+                 HorizontalAlignment="Center">
+          <Grid Width="512" Height="512">
+            <Ellipse Margin="74"
+                     StrokeThickness="0">
+              <Ellipse.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                  <GradientStop Color="#FFFFBE4A" Offset="0"/>
+                  <GradientStop Color="#FFFF873E" Offset=".52"/>
+                  <GradientStop Color="#FFFF5E67" Offset="1"/>
+                </LinearGradientBrush>
+              </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Width="114"
+                     Height="114"
+                     Fill="#FDFDFC"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Ellipse Margin="74"
+                     Stroke="#FFFFFF"
+                     StrokeThickness="4"
+                     Opacity=".55"/>
+          </Grid>
+          <Viewbox.RenderTransform>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+          </Viewbox.RenderTransform>
+        </Viewbox>
+        <TextBlock Text="Convert beautifully."
+                   FontFamily="Segoe UI"
+                   FontSize="27"
+                   FontWeight="SemiBold"
+                   Foreground="{StaticResource InkBrush}"
+                   HorizontalAlignment="Center"
+                   Margin="0,16,0,0"/>
+        <TextBlock Text="Choose an output format, then drop your files."
+                   FontSize="13"
+                   Foreground="{StaticResource MutedBrush}"
+                   HorizontalAlignment="Center"
+                   Margin="0,7,0,0"/>
+      </StackPanel>
+
+      <Border Grid.Row="2"
+              Margin="0,26,0,22"
+              Padding="18,14"
+              CornerRadius="14"
+              Background="#FAF7F4"
+              BorderBrush="#F0E5DE"
+              BorderThickness="1">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+          </Grid.ColumnDefinitions>
+          <StackPanel>
+            <TextBlock Text="OUTPUT FORMAT"
+                       FontSize="10"
+                       FontWeight="Bold"
+                       Foreground="{StaticResource AccentBrush}"/>
+            <TextBlock Text="{Binding Status}"
+                       FontSize="13"
+                       Foreground="{StaticResource InkBrush}"
+                       Margin="0,4,0,0"/>
+          </StackPanel>
+          <TextBlock Grid.Column="1"
+                     Text="1"
+                     FontSize="12"
+                     Foreground="{StaticResource AccentBrush}"
+                     VerticalAlignment="Center"
+                     Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        </Grid>
+      </Border>
+
+      <Grid Grid.Row="3">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ItemsControl ItemsSource="{Binding Formats}" Grid.ColumnSpan="2">
+          <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+              <UniformGrid Columns="2"/>
+            </ItemsPanelTemplate>
+          </ItemsControl.ItemsPanel>
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <Button Style="{StaticResource FormatButton}"
+                      Click="Format_Click"
+                      Tag="{Binding Format}">
+                <Grid>
+                  <Ellipse Width="8" Height="8" Fill="{Binding Brush}" Margin="0,0,12,0"/>
+                  <TextBlock Text="{Binding Label}"
+                             Margin="20,0,0,0"
+                             FontWeight="SemiBold"/>
+                  <TextBlock Text="{Binding Detail}"
+                             HorizontalAlignment="Right"
+                             Foreground="{StaticResource MutedBrush}"
+                             FontSize="11"/>
+                </Grid>
+              </Button>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </Grid>
+
+      <TextBlock Grid.Row="4"
+                 Text="Files stay on your computer"
+                 FontSize="11"
+                 Foreground="#A0A1A2"
+                 HorizontalAlignment="Center"
+                 Margin="0,18,0,0"/>
+
+      <Border Grid.RowSpan="5"
+              Panel.ZIndex="10"
+              CornerRadius="22"
+              Background="#F2D96B3B"
+              BorderBrush="{StaticResource AccentBrush}"
+              BorderThickness="2"
+              Visibility="{Binding IsDragActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+          <TextBlock Text="Drop to convert"
+                     Foreground="{StaticResource InkBrush}"
+                     FontSize="22"
+                     FontWeight="SemiBold"
+                     HorizontalAlignment="Center"/>
+          <TextBlock Text="{Binding SelectedFormatLabel}"
+                     Foreground="#7F422B"
+                     FontSize="13"
+                     Margin="0,8,0,0"
+                     HorizontalAlignment="Center"/>
+        </StackPanel>
+      </Border>
+    </Grid>
+  </Border>
+</Window>

@@ -1,0 +1,13 @@
+# Build output
+Windows/Donut/bin/
+Windows/Donut/obj/
+Mac OS/Donut/build/
+
+# Local tooling and editor files
+.vs/
+.vscode/
+*.user
+*.suo
+
+# macOS metadata
+.DS_Store
