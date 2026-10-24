@@ -9,6 +9,14 @@ public partial class App : System.Windows.Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+
+        if (e.Args.Contains("--uninstall", StringComparer.OrdinalIgnoreCase))
+        {
+            ShortcutSettings.Delete();
+            Shutdown();
+            return;
+        }
+
         tray = new TrayApplicationContext();
         if (!ShortcutSettings.Exists)
         {

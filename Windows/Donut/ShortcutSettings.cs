@@ -34,6 +34,16 @@ public static class ShortcutSettings
         File.WriteAllText(SettingsPath, $"{binding.Modifiers}|{binding.Key}|{binding.DisplayName}");
     }
 
+    public static void Delete()
+    {
+        if (File.Exists(SettingsPath))
+            File.Delete(SettingsPath);
+
+        if (Directory.Exists(SettingsDirectory)
+            && !Directory.EnumerateFileSystemEntries(SettingsDirectory).Any())
+            Directory.Delete(SettingsDirectory);
+    }
+
     public static ShortcutBinding FromKey(Key key, ModifierKeys modifiers)
     {
         uint nativeModifiers = 0;
