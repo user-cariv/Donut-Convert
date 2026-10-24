@@ -232,7 +232,7 @@ struct FileConverter {
             throw FileConverterError.unableToCreateDestination
         }
 
-        context.beginPDFPage([:])
+        context.beginPDFPage(nil as CFDictionary?)
         context.draw(
             image,
             in: mediaBox
