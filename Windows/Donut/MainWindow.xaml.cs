@@ -16,6 +16,7 @@ namespace Donut;
 public partial class MainWindow : Window, INotifyPropertyChanged
 {
     private readonly FileConverter converter = new();
+    private readonly Action changeShortcut;
     private OutputFormat? selectedFormat;
     private bool isBusy;
     private bool isDragActive;
@@ -52,9 +53,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     public string SelectedFormatLabel =>
         selectedFormat is null ? "Choose a format first" : $"Convert to {selectedFormat.Value.DisplayName()}";
 
-    public MainWindow()
+    public MainWindow(Action changeShortcut)
     {
         InitializeComponent();
+        this.changeShortcut = changeShortcut;
         DataContext = this;
     }
 
@@ -86,6 +88,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private void Minimize_Click(object sender, RoutedEventArgs e) => Hide();
 
     private void Close_Click(object sender, RoutedEventArgs e) => Hide();
+
+    private void ChangeShortcut_Click(object sender, RoutedEventArgs e) =>
+        changeShortcut();
 
     private static T? FindVisualParent<T>(DependencyObject child)
         where T : DependencyObject

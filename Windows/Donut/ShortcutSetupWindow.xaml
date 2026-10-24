@@ -7,7 +7,9 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Background="#FDFDFC"
-        ShowInTaskbar="True">
+        ShowInTaskbar="True"
+        Focusable="True"
+        Loaded="Window_Loaded">
   <Border Padding="28" CornerRadius="18" BorderBrush="#E8E8E6" BorderThickness="1">
     <StackPanel>
       <TextBlock Text="Set up your Donut shortcut"
@@ -34,7 +36,9 @@
                      FontSize="19"
                      FontWeight="SemiBold"
                      Foreground="#202124"
-                     Margin="0,7,0,0"/>
+                     Margin="0,7,0,0"
+                     Focusable="True"
+                     PreviewKeyDown="ShortcutText_PreviewKeyDown"/>
         </StackPanel>
       </Border>
       <TextBlock Text="Use at least one modifier: Ctrl, Alt, Shift, or Win."

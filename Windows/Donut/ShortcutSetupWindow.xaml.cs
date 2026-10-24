@@ -13,7 +13,23 @@ public partial class ShortcutSetupWindow : Window
         PreviewKeyDown += ShortcutSetupWindow_PreviewKeyDown;
     }
 
+    private void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        Activate();
+        ShortcutText.Focus();
+    }
+
     private void ShortcutSetupWindow_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+        CaptureShortcut(e);
+    }
+
+    private void ShortcutText_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+    {
+        CaptureShortcut(e);
+    }
+
+    private void CaptureShortcut(System.Windows.Input.KeyEventArgs e)
     {
         Key key = e.Key == Key.System ? e.SystemKey : e.Key;
         if (key is Key.LeftCtrl or Key.RightCtrl

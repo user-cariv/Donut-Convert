@@ -117,6 +117,11 @@
                    Foreground="{StaticResource InkBrush}"
                    VerticalAlignment="Center"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+          <Button Content="Change Shortcut"
+                  Style="{StaticResource IconButton}"
+                  Width="104"
+                  FontSize="11"
+                  Click="ChangeShortcut_Click"/>
           <Button Style="{StaticResource IconButton}" Content="—" Click="Minimize_Click"/>
           <Button Style="{StaticResource IconButton}" Content="×" FontSize="20" Click="Close_Click"/>
         </StackPanel>

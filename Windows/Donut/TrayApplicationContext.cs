@@ -62,6 +62,9 @@ public sealed class TrayApplicationContext : IDisposable
     {
         UnregisterHotKey(hotKeySource.Handle, HotKeyId);
         var setup = new ShortcutSetupWindow();
+        if (window is not null)
+            setup.Owner = window;
+
         if (setup.ShowDialog() == true)
             RegisterShortcut();
         else
@@ -82,7 +85,7 @@ public sealed class TrayApplicationContext : IDisposable
     {
         if (window is null)
         {
-            window = new MainWindow();
+            window = new MainWindow(ConfigureShortcut);
             window.Closed += (_, _) => window = null;
         }
 

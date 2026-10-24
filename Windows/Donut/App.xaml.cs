@@ -13,7 +13,7 @@ public partial class App : System.Windows.Application
         if (e.Args.Contains("--uninstall", StringComparer.OrdinalIgnoreCase))
         {
             ShortcutSettings.Delete();
-            Shutdown();
+            Environment.Exit(0);
             return;
         }
 

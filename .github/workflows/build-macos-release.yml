@@ -1,0 +1,39 @@
+name: Build macOS release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Release tag to create or update, for example v1.0.1"
+        required: true
+        type: string
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build macOS DMG
+        working-directory: Mac OS/Donut
+        run: |
+          chmod +x package-macos.sh
+          ./package-macos.sh
+          mv "build/Install Donut.dmg" "build/Install-Donut-macOS.dmg"
+
+      - name: Create or update release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="${{ inputs.release_tag || github.ref_name }}"
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --title "Donut $tag" --generate-notes
+          fi
+          gh release upload "$tag" "Mac OS/Donut/build/Install-Donut-macOS.dmg" --clobber
