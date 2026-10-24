@@ -1,0 +1,33 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="labelShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#FFF" flood-opacity=".7"/>
+    </filter>
+    <filter id="softCover" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <image href="DonutLogo-transparent.png" width="1024" height="1024" preserveAspectRatio="none"/>
+
+  <!-- Soft glass-toned patches hide the source artwork's old labels before the corrected labels are drawn. -->
+  <g fill="#B65C32" fill-opacity=".28" filter="url(#softCover)">
+    <ellipse cx="330" cy="220" rx="112" ry="52" transform="rotate(-34 330 220)"/>
+    <ellipse cx="686" cy="220" rx="112" ry="52" transform="rotate(34 686 220)"/>
+    <ellipse cx="820" cy="470" rx="105" ry="52" transform="rotate(82 820 470)"/>
+    <ellipse cx="512" cy="790" rx="130" ry="54"/>
+    <ellipse cx="196" cy="470" rx="105" ry="52" transform="rotate(-82 196 470)"/>
+  </g>
+
+  <g fill="#17110F" font-family="Arial, sans-serif" font-size="58" font-weight="700"
+     text-anchor="middle" dominant-baseline="middle"
+     style="paint-order:stroke;stroke:#FFF;stroke-opacity:.35;stroke-width:3"
+     filter="url(#labelShadow)">
+    <text x="665" y="218" transform="rotate(30 665 218)">JPG</text>
+    <text x="820" y="512" transform="rotate(90 820 512)">PDF</text>
+    <text x="665" y="806" transform="rotate(30 665 806)">HEIC</text>
+    <text x="359" y="806" transform="rotate(-30 359 806)">TIFF</text>
+    <text x="204" y="512" transform="rotate(90 204 512)">WEBP</text>
+    <text x="359" y="218" transform="rotate(-30 359 218)">PNG</text>
+  </g>
+</svg>
