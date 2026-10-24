@@ -42,7 +42,11 @@ If the source extension already matches the selected format, Donut copies the
 file byte-for-byte. JPEG output uses the highest available GDI+ quality
 setting. PNG and TIFF output use their lossless built-in codecs.
 
-The Windows built-in codec stack does not provide reliable WebP, HEIC, or PDF
+PDF output is a single-page PDF written by Donut itself (Windows has no PDF
+encoder). The image is flattened onto white and embedded as a high-quality
+JPEG on a page sized to the image.
+
+The Windows built-in codec stack does not provide reliable WebP or HEIC
 encoding on every supported machine. Those format tiles currently report a
 clear error instead of silently producing a lower-quality or incorrect file.
 They can be enabled later with a vetted codec package if broad format support

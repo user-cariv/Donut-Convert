@@ -128,7 +128,19 @@
       </Grid>
 
       <StackPanel Grid.Row="1" Margin="0,18,0,0">
-        <Viewbox x:Name="Logo"
+        <Grid x:Name="Logo"
+              Width="116"
+              Height="116"
+              HorizontalAlignment="Center"
+              RenderTransformOrigin="0.5,0.5">
+          <Grid.RenderTransform>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+          </Grid.RenderTransform>
+          <Image x:Name="LogoImage"
+                 Visibility="Collapsed"
+                 Stretch="Uniform"
+                 RenderOptions.BitmapScalingMode="HighQuality"/>
+        <Viewbox x:Name="LogoVector"
                  Width="116"
                  Height="116"
                  HorizontalAlignment="Center">
@@ -153,10 +165,8 @@
                      StrokeThickness="4"
                      Opacity=".55"/>
           </Grid>
-          <Viewbox.RenderTransform>
-            <ScaleTransform ScaleX="1" ScaleY="1"/>
-          </Viewbox.RenderTransform>
         </Viewbox>
+        </Grid>
         <TextBlock Text="Convert beautifully."
                    FontFamily="Segoe UI"
                    FontSize="27"

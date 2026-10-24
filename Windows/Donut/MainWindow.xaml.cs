@@ -60,8 +60,36 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         DataContext = this;
     }
 
+    private void LoadLogo()
+    {
+        // Use the same liquid-glass logo as the website; keep the vector ring as a fallback.
+        try
+        {
+            string path = Path.Combine(AppContext.BaseDirectory, "DonutLogo-transparent.png");
+            if (!File.Exists(path))
+                return;
+
+            var image = new System.Windows.Media.Imaging.BitmapImage();
+            image.BeginInit();
+            image.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
+            image.UriSource = new Uri(path, UriKind.Absolute);
+            image.EndInit();
+            image.Freeze();
+
+            LogoImage.Source = image;
+            LogoImage.Visibility = Visibility.Visible;
+            LogoVector.Visibility = Visibility.Collapsed;
+        }
+        catch
+        {
+            // Fall back to the vector logo.
+        }
+    }
+
     private void Window_Loaded(object sender, RoutedEventArgs e)
     {
+        LoadLogo();
+
         var animation = new DoubleAnimation
         {
             From = 1,
@@ -150,6 +178,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         int converted = 0;
         int failed = 0;
         string? firstError = null;
+        string? lastFolder = null;
 
         await Task.Run(() =>
         {
@@ -157,7 +186,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             {
                 try
                 {
-                    converter.Convert(file, format);
+                    string saved = converter.Convert(file, format);
+                    lastFolder = Path.GetDirectoryName(saved);
                     converted++;
                 }
                 catch (Exception error)
@@ -169,10 +199,13 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         });
 
         IsBusy = false;
+        string where = string.IsNullOrEmpty(lastFolder)
+            ? string.Empty
+            : $" in {(Path.GetFileName(lastFolder) is { Length: > 0 } name ? name : lastFolder)}";
         Status = converted > 0
             ? failed == 0
-                ? $"{converted} saved as {format.DisplayName()}"
-                : $"{converted} saved · {failed} failed"
+                ? $"{converted} saved as {format.DisplayName()}{where}"
+                : $"{converted} saved{where} · {failed} failed"
             : firstError ?? "Conversion failed";
     }
 
