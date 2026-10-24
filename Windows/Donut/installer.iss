@@ -1,5 +1,5 @@
-#define MyAppName "Donut"
-#define MyAppVersion "1.0.0"
+﻿#define MyAppName "Donut"
+#define MyAppVersion "1.0.1"
 #define MyAppPublisher "Donut"
 #define MyAppExeName "Donut.exe"
 
