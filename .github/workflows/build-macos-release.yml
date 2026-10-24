@@ -24,6 +24,7 @@ jobs:
       - name: Build macOS DMG
         working-directory: Mac OS/Donut
         run: |
+          set -euxo pipefail
           chmod +x package-macos.sh
           ./package-macos.sh
           mv "build/Install Donut.dmg" "build/Install-Donut-macOS.dmg"

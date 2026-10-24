@@ -35,7 +35,7 @@ cp "$BUILD_DIR/Donut.icns" "$PROJECT_DIR/Donut.icns"
 
 xcodebuild \
     -project "$PROJECT_DIR/Donut.xcodeproj" \
-    -scheme Donut \
+    -target Donut \
     -configuration Release \
     CONFIGURATION_BUILD_DIR="$BUILD_DIR" \
     CODE_SIGN_IDENTITY="-" \
