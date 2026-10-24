@@ -27,8 +27,8 @@ jobs:
           set -euxo pipefail
           chmod +x package-macos.sh
           xcodebuild -version
-          sips --version
-          iconutil -h
+          command -v sips
+          command -v iconutil
           bash -x ./package-macos.sh
           mv "build/Install Donut.dmg" "build/Install-Donut-macOS.dmg"
 
