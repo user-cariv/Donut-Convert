@@ -231,26 +231,27 @@ final class RadialWindowManager: NSObject {
                 }
             }
 
+            let result = (convertedCount, failedCount, firstError)
             await MainActor.run { [weak self] in
                 guard let self, self.conversionID == currentConversionID else {
                     return
                 }
                 self.conversionTask = nil
-                if convertedCount > 0 {
+                if result.0 > 0 {
                     NSSound(named: "Glass")?.play()
                     self.hudModel.status = .done(
-                        converted: convertedCount,
-                        failed: failedCount,
+                        converted: result.0,
+                        failed: result.1,
                         format: format
                     )
                     NSLog(
-                        "Converted \(convertedCount) file(s) to \(format.displayName); "
-                            + "\(failedCount) failed"
+                        "Converted \(result.0) file(s) to \(format.displayName); "
+                            + "\(result.1) failed"
                     )
                     self.scheduleHideAfterResult(after: 1.2)
                 } else {
                     NSSound.beep()
-                    let message = firstError ?? "No files were converted."
+                    let message = result.2 ?? "No files were converted."
                     self.hudModel.status = .failed(message)
                     NSLog("Conversion failed: \(message)")
                     self.scheduleHideAfterResult(after: 2.0)

@@ -225,14 +225,14 @@ struct FileConverter {
         )
 
         guard let context = CGContext(
-            url: url as CFURL,
+            url as CFURL,
             mediaBox: &mediaBox,
             nil
         ) else {
             throw FileConverterError.unableToCreateDestination
         }
 
-        context.beginPDFPage(nil)
+        context.beginPDFPage([:])
         context.draw(
             image,
             in: mediaBox
