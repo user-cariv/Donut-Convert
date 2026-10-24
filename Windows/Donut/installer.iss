@@ -19,7 +19,7 @@ DefaultDirName={autopf}\Donut
 DefaultGroupName=Donut
 DisableProgramGroupPage=yes
 OutputDir=installer
-OutputBaseFilename=Install Donut
+OutputBaseFilename=Install_Donut
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
@@ -41,6 +41,9 @@ Name: "{autodesktop}\Donut"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopic
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "Launch Donut"; Flags: nowait postinstall skipifsilent
+
+[UninstallRun]
+Filename: "{app}\{#MyAppExeName}"; Parameters: "--uninstall"; Flags: runhidden waituntilterminated
 
 [Registry]
 Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "Donut"; ValueData: """{app}\{#MyAppExeName}"""; Flags: uninsdeletevalue
